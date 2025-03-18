@@ -79,6 +79,19 @@ export function onSubmit(event) {
             form.reset();
         })
         .catch(error => {
+               let errorMessage = 'An unexpected error occurred. Please try again later!';
+            if (error.response) {
+                errorMessage = `Server Error: ${error.response.data.message || error.message}`;
+            } else if (error.request) {
+                errorMessage = 'Network Error: Failed to reach the server. Please check your internet connection.';
+            }
+
+            iziToast.show({
+                title: "⚠️",
+                message: errorMessage,
+                color: 'red',
+                position: "topRight"
+            });
             console.error("Error:", error.message);
         })
         .finally(() => {
