@@ -3,9 +3,6 @@ import axios from "axios";
 const API_KEY = (axios.defaults.API_KEY = '49359087-343ead2b9467da8fb57304bcb');
 const BASE_URL = (axios.defaults.baseURL = 'https://pixabay.com/api/');
 
-
-
-
 export async function requestServer(query) {
     let page = 1;
     let per_page = 15;
@@ -23,7 +20,8 @@ export async function requestServer(query) {
     };
 
     const response = await axios.get(BASE_URL, options);
-    return response.data.hits;
+    const { hits } = response.data;
+    return hits;
 }
 
 
