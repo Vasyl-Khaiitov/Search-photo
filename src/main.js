@@ -129,7 +129,7 @@ async function onClick(event) {
       correctValueText,
       currentPage
     );
-    console.log(hits, totalHits);
+  
 
     if (hits.length === 0) {
       hideButton();
