@@ -50,6 +50,13 @@ input:focus {
 }
 
 button {
+  font-weight: 500;
+  font-size: 16px;
+
+  /* line-height: 24px; */
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
   border-radius: 8px;
   padding: 8px 16px;
   margin-left: 8px;
@@ -86,8 +93,6 @@ button:hover {
 .gallery-item:hover {
   transform: scale(1.1);
 }
-.gallery-item-link {
-}
 
 .gallery-img {
   width: 360px;
@@ -117,15 +122,22 @@ p {
   height: 48px;
   color: #1b0b0b;
 }
+
+.loader-top {
+  top: 32px; /* Лоадер розташовується зверху */
+  bottom: auto;
+}
+
+.loader-bottom {
+  margin-left: 660px;
+}
+
 .loader:before,
 .loader:after {
   content: '';
   display: block;
 
   position: absolute;
-
-  top: 398%;
-  left: -316%;
 
   width: inherit;
   height: inherit;
@@ -183,4 +195,15 @@ p {
   87% {
     box-shadow: 0.2em -0.2em 0 0 currentcolor;
   }
+}
+
+.btn-more-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.btn-more {
+  width: 125px;
 }

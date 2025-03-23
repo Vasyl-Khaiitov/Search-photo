@@ -17,14 +17,20 @@
           <input type="text" name="searchText" placeholder="Search images..." required>
         </label>
         <button type="submit">Search</button>
-        <span class="loader hidden"></span>
       </form>
     </div>
 
     <div>
       <ul class="gallery"></ul>
     </div>
-    <button class="btn-more" type="button">Load more</button>
+
+    <div class="container btn-more-div">
+      <button class="btn-more hidden" type="button">Load more</button>
+    </div>
+
+    <div class="loader hidden">
+    </div>
+
   </main>
   <script type="module" src="./main.js"></script>
 </body>

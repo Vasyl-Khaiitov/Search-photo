@@ -9,23 +9,38 @@ export function clearGallery() {
 }
 // Все в одній
 export function updateGallery(hits) {
-    clearGallery();
     markupPhoto(hits);
 }
-// Приховування
-export function showLoader() {
-    loader.classList.remove('hidden');
-}
-// Показ
+
 export function hideLoader() {
     loader.classList.add('hidden');
+    loader.classList.remove('loader-top');
+}
+
+export function showLoaderTop() {
+    loader.classList.remove('hidden');
+    loader.classList.add('loader-top');
+}
+
+export function showLoaderBottom() {
+    loader.classList.remove('hidden');
+    loader.classList.add('loader-bottom');
+    loader.classList.remove('loader-top');
+}
+
+export function showButton() {
+    btnMore.classList.remove("hidden");
+}
+
+export function hideButton() {
+    btnMore.classList.add("hidden");
 }
 
 const loader = document.querySelector('.loader');
 const gallery = document.querySelector(".gallery");
+export const btnMore = document.querySelector(".btn-more")
 
 export function markupPhoto(hits = []) {
-    gallery.innerHTML = "";
     
     const galleryMarkup = hits
     .map(hit =>
