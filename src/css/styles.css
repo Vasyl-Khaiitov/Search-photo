@@ -3,6 +3,7 @@
 @import url('./base.css');
 /* Styles for Mobile devices */
 .container {
+  position: relative;
   min-width: 320px;
   max-width: 375px;
   margin: 0 auto;
@@ -53,7 +54,6 @@ button {
   font-weight: 500;
   font-size: 16px;
 
-  /* line-height: 24px; */
   line-height: 1.5;
   letter-spacing: 0.04em;
   color: #fff;
@@ -84,7 +84,6 @@ button:hover {
 }
 
 .gallery-item {
-  /* width: calc((100% - 2 * 24px) / 3); */
   max-width: 360px;
   transition: transform 0.3s ease;
   border: 1px solid #808080;
@@ -115,6 +114,7 @@ p {
 }
 
 .loader {
+  position: absolute;
   transform: rotateZ(45deg);
   border-radius: 50%;
   width: 48px;
@@ -128,8 +128,7 @@ p {
   display: block;
 
   position: absolute;
-  top: -427px;
-  left: 380px;
+
   width: inherit;
   height: inherit;
   border-radius: 50%;
@@ -193,8 +192,21 @@ p {
   justify-content: center;
   align-items: center;
   margin-top: 32px;
+  position: relative;
 }
 
 .btn-more {
   width: 125px;
+}
+
+.loader-top {
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%) rotateZ(45deg);
+}
+
+.loader-bottom {
+  left: 583px;
+  transform: translateX(-50%) rotateZ(45deg);
+  top: 1413px;
 }

@@ -5,21 +5,34 @@ import { requestServer } from './js/pixabay-api';
 import {
   clearGallery,
   updateGallery,
-  hideLoader,
-  showLoaderBottom,
-  showLoaderTop,
   showButton,
   hideButton,
   btnMore,
 } from './js/render-functions';
 
 const form = document.querySelector('.form');
+const loader = document.querySelector('.loader');
+
+function showLoader(position = 'top') {
+  loader.classList.remove('hidden');
+
+  if (position === 'top') {
+    loader.classList.add('loader-top');
+    loader.classList.remove('loader-bottom');
+  } else if (position === 'bottom') {
+    loader.classList.remove('loader-top');
+    loader.classList.add('loader-bottom');
+  }
+  //   loader.style.display = 'block';
+}
 
 btnMore.addEventListener('click', onClick);
 form.addEventListener('submit', onSubmit);
 
 let correctValueText = null;
 let currentPage = 1;
+// Положення спінера
+let currentTop = 28;
 
 export async function onSubmit(event) {
   event.preventDefault();
@@ -41,7 +54,7 @@ export async function onSubmit(event) {
     return;
   }
 
-  showLoaderTop();
+  showLoader('top');
   hideButton();
 
   try {
@@ -108,8 +121,9 @@ export async function onSubmit(event) {
 
 async function onClick(event) {
   currentPage += 1;
-
-  showLoaderBottom();
+  currentTop += 1385;
+  loader.style.top = `${currentTop}px`;
+  showLoader('bottom');
 
   try {
     const { hits, totalHits } = await requestServer(

@@ -1,49 +1,31 @@
-
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 let lightbox = null;
 
 export function clearGallery() {
-    gallery.innerHTML = '';
+  gallery.innerHTML = '';
 }
 // Все в одній
 export function updateGallery(hits) {
-    markupPhoto(hits);
-}
-
-export function hideLoader() {
-    loader.classList.add('hidden');
-    loader.classList.remove('loader-top');
-}
-
-export function showLoaderTop() {
-    loader.classList.remove('hidden');
-    loader.classList.add('loader-top');
-}
-
-export function showLoaderBottom() {
-    loader.classList.remove('hidden');
-    loader.classList.add('loader-bottom');
-    loader.classList.remove('loader-top');
+  markupPhoto(hits);
 }
 
 export function showButton() {
-    btnMore.classList.remove("hidden");
+  btnMore.classList.remove('hidden');
 }
 
 export function hideButton() {
-    btnMore.classList.add("hidden");
+  btnMore.classList.add('hidden');
 }
 
-const loader = document.querySelector('.loader');
-const gallery = document.querySelector(".gallery");
-export const btnMore = document.querySelector(".btn-more")
+const gallery = document.querySelector('.gallery');
+export const btnMore = document.querySelector('.btn-more');
 
 export function markupPhoto(hits = []) {
-    
-    const galleryMarkup = hits
-    .map(hit =>
+  const galleryMarkup = hits
+    .map(
+      hit =>
         `<li class="gallery-item">
         <a href="${hit.largeImageURL}" class="gallery-item-link">
         <img class="gallery-img" src="${hit.webformatURL}" alt="${hit.tags}" loading="lazy" />
@@ -56,19 +38,18 @@ export function markupPhoto(hits = []) {
         </div>
         </li>`
     )
-    .join("");
-    gallery.insertAdjacentHTML("beforeend", galleryMarkup)
+    .join('');
+  gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 
-       if (!lightbox) {
-                lightbox = new SimpleLightbox(".gallery a", {
-                    caption: true,
-                    captionType: "attr",
-                    captionsData: "alt",
-                    captionPosition: "bottom",
-                    captionDelay: 250
-                });
-            } else {
-                lightbox.refresh();
-            }
-
+  if (!lightbox) {
+    lightbox = new SimpleLightbox('.gallery a', {
+      caption: true,
+      captionType: 'attr',
+      captionsData: 'alt',
+      captionPosition: 'bottom',
+      captionDelay: 250,
+    });
+  } else {
+    lightbox.refresh();
+  }
 }
