@@ -11,19 +11,22 @@ import {
 } from './js/render-functions';
 
 const form = document.querySelector('.form');
-const loader = document.querySelector('.loader');
+const loaderTop = document.querySelector('.loader');
+const loaderBottom = document.querySelector('.loader-bottom');
 
-function showLoader(position = 'top') {
-  loader.classList.remove('hidden');
+function showLoaderTop() {
+  loaderTop.classList.remove('hidden');
+}
 
-  if (position === 'top') {
-    loader.classList.add('loader-top');
-    loader.classList.remove('loader-bottom');
-  } else if (position === 'bottom') {
-    loader.classList.remove('loader-top');
-    loader.classList.add('loader-bottom');
-  }
-  //   loader.style.display = 'block';
+function hideLoaderTop() {
+  loaderTop.classList.add('hidden');
+}
+function showLoaderBottom() {
+  loaderBottom.classList.remove('hidden');
+}
+
+function hideLoaderBottom() {
+  loaderBottom.classList.add('hidden');
 }
 
 btnMore.addEventListener('click', onClick);
@@ -31,8 +34,6 @@ form.addEventListener('submit', onSubmit);
 
 let correctValueText = null;
 let currentPage = 1;
-// Положення спінера
-let currentTop = 28;
 
 export async function onSubmit(event) {
   event.preventDefault();
@@ -54,7 +55,7 @@ export async function onSubmit(event) {
     return;
   }
 
-  showLoader('top');
+  showLoaderTop();
   hideButton();
 
   try {
@@ -71,7 +72,7 @@ export async function onSubmit(event) {
         color: 'yellow',
         position: 'topRight',
       });
-      hideLoader();
+      hideLoaderTop();
       return;
     }
 
@@ -83,7 +84,7 @@ export async function onSubmit(event) {
         color: 'red',
         position: 'topRight',
       });
-      hideLoader();
+      hideLoaderTop();
       return;
     }
 
@@ -116,15 +117,13 @@ export async function onSubmit(event) {
     });
     console.error('Error:', error.message);
   }
-  hideLoader();
+  hideLoaderTop();
 }
 
 async function onClick(event) {
   currentPage += 1;
-  currentTop += 1385;
-  loader.style.top = `${currentTop}px`;
-  showLoader('bottom');
 
+  showLoaderBottom();
   try {
     const { hits, totalHits } = await requestServer(
       correctValueText,
@@ -158,6 +157,6 @@ async function onClick(event) {
       position: 'topRight',
     });
   } finally {
-    hideLoader();
+    hideLoaderBottom();
   }
 }

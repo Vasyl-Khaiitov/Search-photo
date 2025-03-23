@@ -6,7 +6,7 @@ let lightbox = null;
 export function clearGallery() {
   gallery.innerHTML = '';
 }
-// Все в одній
+
 export function updateGallery(hits) {
   markupPhoto(hits);
 }
