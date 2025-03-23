@@ -116,20 +116,10 @@ p {
 
 .loader {
   transform: rotateZ(45deg);
-  perspective: 1000px;
   border-radius: 50%;
   width: 48px;
   height: 48px;
   color: #1b0b0b;
-}
-
-.loader-top {
-  top: 32px; /* Лоадер розташовується зверху */
-  bottom: auto;
-}
-
-.loader-bottom {
-  margin-left: 660px;
 }
 
 .loader:before,
@@ -138,7 +128,8 @@ p {
   display: block;
 
   position: absolute;
-
+  top: -427px;
+  left: 380px;
   width: inherit;
   height: inherit;
   border-radius: 50%;
