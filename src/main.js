@@ -170,7 +170,7 @@ function scrollImages() {
     const cardHeight = ImageCard.getBoundingClientRect().height;
 
     window.scrollBy({
-      top: cardHeight * 3,
+      top: cardHeight * 2.5,
       behavior: 'smooth',
     });
   }
