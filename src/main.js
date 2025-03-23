@@ -148,6 +148,8 @@ async function onClick(event) {
         hideButton();
       }
     }
+
+    scrollImages();
   } catch (error) {
     console.error('Error during fetching data:', error.message);
     iziToast.show({
@@ -158,5 +160,18 @@ async function onClick(event) {
     });
   } finally {
     hideLoaderBottom();
+  }
+}
+
+function scrollImages() {
+  const ImageCard = document.querySelector('.gallery-img');
+
+  if (ImageCard) {
+    const cardHeight = ImageCard.getBoundingClientRect().height;
+
+    window.scrollBy({
+      top: cardHeight * 3,
+      behavior: 'smooth',
+    });
   }
 }
